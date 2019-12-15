@@ -1,0 +1,23 @@
+{
+    "name": "cherif/todo",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Cherif BOUCHELAGHEM",
+            "email": "cherif.bouchelaghem@gmail.com"
+        }
+    ],
+    "require": {
+        "behat/behat": "^3.5",
+        "phpspec/phpspec": "^6.1",
+        "marc-mabe/php-enum": "^4.1"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-4": {
+            "Todo\\": "src/Todo"
+        }
+    }
+}
