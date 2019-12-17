@@ -8,8 +8,6 @@
         }
     ],
     "require": {
-        "behat/behat": "^3.5",
-        "phpspec/phpspec": "^6.1",
         "marc-mabe/php-enum": "^4.1"
     },
     "config": {
@@ -18,6 +16,17 @@
     "autoload": {
         "psr-4": {
             "Todo\\": "src/Todo"
+        }
+    },
+    "require-dev": {
+        "laravel/framework": "^6.7",
+        "phpspec/phpspec": "^6.1"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Todo\\Infrastructure\\Provider\\TodoServiceProvider"
+            ]
         }
     }
 }
