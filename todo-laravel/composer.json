@@ -63,7 +63,7 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../todo",
+            "url": "./packages/todo",
             "options": {
                 "symlink": true
             }

@@ -9,7 +9,7 @@ use Todo\Domain\Model\Todo\OwnerService;
 use Todo\Domain\Model\Todo\TodoDeadline;
 use Todo\Domain\Model\Todo\TodoReminder;
 
-class TodoApplicationService
+class TodoApplicationService implements TodoApplicationServiceInterface
 {
     private $todoList;
     private $ownerService;
@@ -23,22 +23,23 @@ class TodoApplicationService
     public function addTodo(string $name, string $ownerId)
     {
         $owner = $this->ownerService->get($ownerId);
-        $todo = Todo::add(TodoName::fromString($name), $owner);
-        $this->todoList->save($todo);
+        $todoId = $this->todoList->generateId();
+        $todo = Todo::add($todoId, TodoName::fromString($name), $owner);
+        $this->todoList->add($todo);
     }
 
     public function markTodoAsDone(string $todoName)
     {
         $todo = $this->todoList->getTodoByName(TodoName::fromString($todoName));
         $todo->markAsDone();
-        $this->todoList->save($todo);
+        $this->todoList->persist($todo);
     }
 
     public function reopenTodo(string $todoName)
     {
         $todo = $this->todoList->getTodoByName(TodoName::fromString($todoName));
         $todo->reopen();
-        $this->todoList->save($todo);
+        $this->todoList->persist($todo);
     }
 
     public function addDeadLineToTodo(string $todoName, string $deadline, string $ownerId)
@@ -46,7 +47,7 @@ class TodoApplicationService
         $todo = $this->todoList->getTodoByName(TodoName::fromString($todoName));
         $owner = $this->ownerService->get($ownerId);
         $todo->addDeadline($owner, TodoDeadline::fromString($deadline));
-        $this->todoList->save($todo);
+        $this->todoList->persist($todo);
     }
 
     public function addReminderToTodo(string $todoName, string $reminder, string $ownerId)
@@ -54,6 +55,6 @@ class TodoApplicationService
         $todo = $this->todoList->getTodoByName(TodoName::fromString($todoName));
         $owner = $this->ownerService->get($ownerId);
         $todo->addReminder($owner, TodoReminder::fromString($reminder));
-        $this->todoList->save($todo);
+        $this->todoList->persist($todo);
     }
 }

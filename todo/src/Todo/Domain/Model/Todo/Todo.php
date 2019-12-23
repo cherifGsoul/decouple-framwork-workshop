@@ -4,6 +4,7 @@ namespace Todo\Domain\Model\Todo;
 
 class Todo
 {
+    private $id;
     private $name;
     private $owner;
     private $status;
@@ -14,10 +15,10 @@ class Todo
     {
     }
 
-    public static function add(TodoName $name, Owner $owner) : self
+    public static function add(TodoId $id, TodoName $name, Owner $owner) : self
     {
         $todo = new Todo();
-
+        $todo->id = $id;
         $todo->name = $name;
         $todo->owner = $owner;
         $todo->status = TodoStatus::OPEN();
@@ -27,7 +28,7 @@ class Todo
 
     public function markAsDone()
     {
-        if ($this->status->is(TodoStatus::DONE())) {
+        if ($this->status->equals(TodoStatus::DONE())) {
             throw new \DomainException('Todo is already done');
         }
         $this->status = TodoStatus::DONE();
@@ -35,7 +36,7 @@ class Todo
 
     public function reopen()
     {
-        if ($this->status->is(TodoStatus::OPEN())) {
+        if ($this->status->equals(TodoStatus::OPEN())) {
             throw new \DomainException('Todo is already open');
         }
         $this->status = TodoStatus::OPEN();
@@ -47,7 +48,7 @@ class Todo
             throw new \DomainException('Only the owner of the todo can add deadline!');
         }
 
-        if ($this->status->is(TodoStatus::DONE())) {
+        if ($this->status->equals(TodoStatus::DONE())) {
             throw new \DomainException('Deadline can only be added to an open todo!');
         }
 
@@ -64,7 +65,7 @@ class Todo
             throw new \DomainException('Only the owner of the todo can add deadline!');
         }
 
-        if ($this->status->is(TodoStatus::DONE())) {
+        if ($this->status->equals(TodoStatus::DONE())) {
             throw new \DomainException('Deadline can only be added to an open todo!');
         }
 
@@ -73,6 +74,11 @@ class Todo
         }
 
         $this->deadline = $deadline;
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 
     public function getName() : TodoName

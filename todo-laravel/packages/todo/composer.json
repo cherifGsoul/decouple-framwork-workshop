@@ -1,0 +1,36 @@
+{
+    "name": "cherif/todo",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Cherif BOUCHELAGHEM",
+            "email": "cherif.bouchelaghem@gmail.com"
+        }
+    ],
+    "require": {
+        "marc-mabe/php-enum": "^4.1",
+        "doctrine/orm": "^2.7",
+        "myclabs/php-enum": "^1.7",
+        "acelaya/doctrine-enum-type": "^2.3",
+        "ramsey/uuid": "^3.9",
+        "ramsey/uuid-doctrine": "^1.5"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-4": {
+            "Todo\\": "src/Todo"
+        }
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^6.1"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Todo\\Infrastructure\\Framework\\Laravel\\Provider\\TodoServiceProvider"
+            ]
+        }
+    }
+}
