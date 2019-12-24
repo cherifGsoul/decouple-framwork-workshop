@@ -413,32 +413,50 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 <li>Domain Modeling</li>
 <li>Clean architecture, Onion Architecture or Hexagonal architecture (Ports and adapters)</li>
 <li>Test Driven Developement</li>
-<li>Behavior (AKA Business) Driven Developement, &quot;BDD&quot;, (if possible), je parle pas de Base De Données</li>
+<li>Behavior (AKA Business) Driven Developement, &quot;BDD&quot;, (if possible), <strong>je parle pas de Base De Données</strong></li>
 </ul>
 </section>
   </div>
   <div class="slide hidden " id="slide-6">
     <section class="slide-content"><h3 id="what-should-be-decoupled-">What should be decoupled?</h3>
 <ul>
-<li>The business logic</li>
+<li>The business logic AKA</li>
 </ul>
 </section>
   </div>
   <div class="slide hidden " id="slide-7">
-    <section class="slide-content"><h3 id="what-is-the-business-logic-">What is the business logic?</h3>
-<h2 id="wikipedia-is-totaly-wrong">Wikipedia is totaly wrong</h2>
-</section>
+    <section class="slide-content"><h3 id="a-typical-software-archictecture">A typical software archictecture</h3>
+<p>Layered architecture</p>
+<center>
+    <img src="img/layered.png" width="60%"/>
+</center></section>
   </div>
   <div class="slide hidden " id="slide-8">
+    <section class="slide-content"><h3 id="where-a-framework-can-help-">Where a framework can help?</h3>
+<p>Framework intervention area</p>
+<center>
+    <img src="img/framework-stuff.png" width="60%"/>
+</center></section>
+  </div>
+  <div class="slide hidden " id="slide-9">
+    <section class="slide-content"><h3 id="what-is-the-business-logic-">What is the business logic?</h3>
+<p>Business logic is that portion of an enterprise system which determines how data is:
+Transformed and/or calculated. </p>
+<p>For example, business logic determines how a tax total is calculated from invoice line items.</p>
+<p>Routed to people or software systems, aka workflow.</p>
+<p><code>Source: http://wiki.c2.com/?BusinessLogicDefinition</code></p>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-10">
     <section class="slide-content"><h3 id="when-we-should-not-do-it-">When we should not do it?</h3>
 <ul>
 <li>When the business domain is not clear</li>
-<li>When the software is not valuable (simple blogs ...etc)</li>
+<li>When the software is not valuable (Trivial applications, prototypes, simple blogs ...etc)</li>
 <li>When the developer is not working on the core domain/subdomain part</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden " id="slide-9">
+  <div class="slide hidden " id="slide-11">
     <section class="slide-content"><h3 id="it-is-time-consuming-right-">It is time consuming, right?</h3>
 <h2 id="yes-and-no">Yes and No</h2>
 <ul>
@@ -447,7 +465,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 </ul>
 </section>
   </div>
-  <div class="slide hidden " id="slide-10">
+  <div class="slide hidden " id="slide-12">
     <section class="slide-content"><h3 id="steps-towards-decoupling">Steps towards decoupling</h3>
 <ul>
 <li>Decouple the namespace (App is not the business name)</li>
@@ -459,18 +477,18 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 </ul>
 </section>
   </div>
-  <div class="slide hidden " id="slide-11">
+  <div class="slide hidden " id="slide-13">
     <section class="slide-content"><h3 id="talk-is-cheap-show-me-the-code">Talk is cheap show me the code</h3>
 <center>
     <img src="img/linus-small.jpeg" />
 </center></section>
   </div>
-  <div class="slide hidden " id="slide-12">
+  <div class="slide hidden " id="slide-14">
     <section class="slide-content"><h3 id="our-example">Our example</h3>
 <h1 id="a-todolist">A Todolist</h1>
 </section>
   </div>
-  <div class="slide hidden " id="slide-13">
+  <div class="slide hidden " id="slide-15">
     <section class="slide-content"><h3 id="project-initialization">Project initialization</h3>
 <pre><code class="lang-shell"><span class="hljs-meta">$</span><span class="bash"> composer init</span>
 </code></pre>
@@ -479,7 +497,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 <p>Keep press enter for the rest</p>
 </section>
   </div>
-  <div class="slide hidden " id="slide-14">
+  <div class="slide hidden " id="slide-16">
     <section class="slide-content"><h3 id="decouple-the-namespace">Decouple the namespace</h3>
 <pre><code class="lang-json">{
     <span class="hljs-attr">"name"</span>: <span class="hljs-string">"cherif/todo"</span>,
@@ -502,41 +520,111 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 </code></pre>
 </section>
   </div>
-  <div class="slide hidden " id="slide-15">
-    <section class="slide-content"><h3 id="domain-modeling-domain-layer-">Domain Modeling (Domain layer)</h3>
-<ul>
-<li><strong>Value Objects</strong>: is not just a thing in your domain, it measures,
-quantifies, or describes something. They can be seen as small, simple objects such as money or a
-date range - whose equality is not based on identity, but instead on the content held, value objects are immutable.</li>
-<li><strong>Entities</strong>: The comparison between objects based on their identity, entities are stateful</li>
-<li><strong>Repositories</strong>: Object with collection like behavior to abstract away the persistence mechanism.</li>
-<li><strong>Domain services</strong>: Stateless objects, if a domain behavior/feature don&#39;t belong to an entity or a value object it could be a domain service.</li>
-</ul>
-</section>
-  </div>
-  <div class="slide hidden " id="slide-16">
-    <section class="slide-content"><h3 id="application-services-aka-application-apis-application-layer-">Application Services, AKA Application APIs (Application layer)</h3>
-<p>Are the middleware between the outside world and the domain logic. The
-purpose of such a mechanism is to transform data from the outside world into meaningful
-domain instructions.</p>
-</section>
-  </div>
   <div class="slide hidden " id="slide-17">
-    <section class="slide-content"><h3 id="frameworks-or-libraries-integration-infrastructure-layer-">Frameworks or Libraries integration (Infrastructure layer)</h3>
+    <section class="slide-content"><h3 id="domain-modeling-domain-layer-to-decouple-the-business-logic">Domain Modeling (Domain layer), to decouple the business logic</h3>
+<p>Idealy, it depends on the programming language only, sometimes, some implementations needs external libraries in order to not invent the wheel.</p>
 </section>
   </div>
   <div class="slide hidden " id="slide-18">
-    <section class="slide-content"><h3 id="database-persistence-integration-infrastructure-layer-">Database/Persistence integration (Infrastructure layer)</h3>
+    <section class="slide-content"><h3 id="domain-modeling-domain-layer-to-decouple-the-business-logic">Domain Modeling (Domain layer), to decouple the business logic</h3>
+<ul>
+<li><p><strong>Value Objects</strong>: is not just a thing in your domain, it measures,
+quantifies, or describes something. They can be seen as small, simple objects such as money or a
+date range - whose equality is not based on identity, but instead on the content held, value objects are immutable.</p>
+</li>
+<li><p><strong>Entities</strong>: Encapsulates business rules, The comparison between objects based on their identity, entities are stateful.</p>
+</li>
+</ul>
 </section>
   </div>
   <div class="slide hidden " id="slide-19">
-    <section class="slide-content"><h3 id="infrastructure-services-integration-infrastructure-layer-">Infrastructure services integration (Infrastructure layer)</h3>
+    <section class="slide-content"><h3 id="domain-modeling-domain-layer-">Domain Modeling (Domain layer)</h3>
+<ul>
+<li><p><strong>Repositories</strong>: Object with collection like behavior to abstract away the persistence mechanism, repositories act as storage locations, where a retrieved object is returned in the exact same state it was persisted in - making them very easy to reason about.</p>
+</li>
+<li><p><strong>Domain services</strong>: Stateless objects, if a domain behavior/feature don&#39;t belong to an entity or a value object it could be a domain service.</p>
+</li>
+</ul>
 </section>
   </div>
   <div class="slide hidden " id="slide-20">
-    <section class="slide-content"></section>
+    <section class="slide-content"><h3 id="domain-modeling-domain-layer-to-decouple-the-business-logic">Domain Modeling (Domain layer), to decouple the business logic</h3>
+<p><code>A note on decoupling the database</code></p>
+<ul>
+<li><p>Auto-increment entity IDs means there&#39;s a tight coupling with the persistence system.</p>
+</li>
+<li><p>In short auto-increment IDs is a <strong>NO</strong> <strong>NO</strong>.</p>
+</li>
+<li><p>use UUID if there&#39;s no codification rule.</p>
+</li>
+</ul>
+</section>
   </div>
-  <div class="slide hidden author-slide" id="slide-21">
+  <div class="slide hidden " id="slide-21">
+    <section class="slide-content"><h3 id="application-services-aka-application-apis-application-layer-">Application Services, AKA Application APIs (Application layer)</h3>
+<p>Are the middleware between the outside world and the domain logic. </p>
+<p>The purpose of such a mechanism is to transform data from the outside world into meaningful
+domain instructions.</p>
+<p>Depends on the domain layer, persistence layer and/or infrastructure layer</p>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-22">
+    <section class="slide-content"><h3 id="frameworks-or-libraries-integration-infrastructure-layer-">Frameworks or Libraries integration (Infrastructure layer)</h3>
+<ul>
+<li><p>Bind/glue services and repositories with the help of Dependency injection container.</p>
+</li>
+<li><p>In MVC structured application the Controller interacts with Application Services only.</p>
+</li>
+<li><p>It receives the data in the desired format.</p>
+</li>
+<li><p>For complicated data structure it can get the help from view-models or/and presenters.</p>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-23">
+    <section class="slide-content"><h3 id="database-persistence-integration-infrastructure-layer-">Database/Persistence integration (Infrastructure layer)</h3>
+<ul>
+<li><p>Where the ORM specific metadata should be, like doctrine mapping files.</p>
+</li>
+<li><p>Implements Repository interfaces, for PDO, doctrine, Capsule ... etc</p>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-24">
+    <section class="slide-content"><h3 id="infrastructure-services-integration-infrastructure-layer-">Infrastructure services integration (Infrastructure layer)</h3>
+<ul>
+<li><p>Hold components responsible for technical stuff, hashing password, notifications, emailing ... etc</p>
+</li>
+<li><p>Implements needed domain services which translate coming data to domain objects.</p>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-25">
+    <section class="slide-content"><h3 id="books">Books</h3>
+<center>
+    <img src="img/ddd-blue.jpg" width="26%" />
+    <img src="img/implemeting-ddd.jpeg" width="25%"/>
+    <img src="img/domain_driven_design_in_php.png" width="26.5%"/>
+    <img src="img/swdddf.jpg" width="26.5%"/>
+    <img src="img/net-ddd.jpeg"/>
+    <img src="img/ebook-domain-driven-design-2.jpg" width="24%"/>
+
+</center>
+
+
+<h3 id="summary">Summary</h3>
+<ul>
+<li>The web/UI, is just a delivery mechanisme (PIPE).</li>
+<li>Database is just a detail.</li>
+<li>The framework is not the heart of your application.</li>
+<li>Software engineering is about handling trade-offs.</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden author-slide" id="slide-26">
     <section class="slide-content"><div class="author">
   <h1 class="name">Cherif BOUCHELAGHEM</h1>
     <h3 class="twitter">
