@@ -15,9 +15,10 @@ class Todo extends Controller
         $this->todoService = $todoService;
     }
 
-    public function add()
+    public function add(Request $request)
     {
-        $this->todoService->addTodo('Learn TDD', 'qwerty');
+
+        return $this->todoService->addTodo($request->input('name'), 'qwerty');
     }
 
     public function markAsDone(Request $request)

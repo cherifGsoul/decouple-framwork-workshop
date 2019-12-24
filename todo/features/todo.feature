@@ -7,6 +7,7 @@ I need to be able to add todos
 Rules:
 - Todo must have a name
 - Todo must have an owner
+- Todo name must not be an empty string
 - The current user who added the todo is the owner
 
 

@@ -58,7 +58,7 @@ Using some __GOOD__ practices like:
 
 ### What should be decoupled?
 
-- The business logic AKA 
+- The business logic
 
 --
 
