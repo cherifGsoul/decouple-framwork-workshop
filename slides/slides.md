@@ -38,8 +38,8 @@ output: index.html
 
 ### Decoupling? Why?
 
-- Frameworks can only help us on those parts
-- Those parts are generic
+- Frameworks can only help us on technical parts
+- Technical parts are generic
 - Business logic is specific
 - No body can give you answer about the business logic on Stackoverflow
 
