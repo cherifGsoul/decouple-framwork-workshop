@@ -2,7 +2,7 @@
 
 A conference and a workshop hold at tech event Algeria2.0.
 
-## [Slides](./slides/index.html)
+## [Slides](https://aladin002dz.github.io/decouple-framwork-workshop/)
 
 ## [Business Logic](./todo/)
 
