@@ -10,10 +10,10 @@ A conference and a workshop hold at tech event Algeria2.0.
 
 ## Links to reading list books
 
-    * **Domain-Driven Design**, by **Eric Evans**.
-    * **Implementing Domain-Driven Design**, by **Vaugh Vernon**.
-    * **Domain-Driven Design in PHP**, by **Carlos Buenosvinos**, **Christian Soronellas**, **Keyvan Akbary**.
-    * **Domain Modeling Made Functional**, by **Scott Wlaschin**.
-    * **Patterns, Principles, and Practices of Domain-Driven Design**,by **Scott Millett**, **Nick Tune**.
-    * **Domain-Driven Design Distilled**, by **Vaughn Vernon**.
+  * **Domain-Driven Design**, by **Eric Evans**.
+  * **Implementing Domain-Driven Design**, by **Vaugh Vernon**.
+  * **Domain-Driven Design in PHP**, by **Carlos Buenosvinos**, **Christian Soronellas**, **Keyvan Akbary**.
+  * **Domain Modeling Made Functional**, by **Scott Wlaschin**.
+  * **Patterns, Principles, and Practices of Domain-Driven Design**,by **Scott Millett**, **Nick Tune**.
+  * **Domain-Driven Design Distilled**, by **Vaughn Vernon**.
 
