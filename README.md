@@ -6,7 +6,7 @@ A conference and a workshop hold at tech event Algeria2.0.
 
 ## [Business Logic](./todo/)
 
-## [Fremework Code](./todo-laravel)
+## [Framework Code](./todo-laravel)
 
 ## Links to reading list books
 
