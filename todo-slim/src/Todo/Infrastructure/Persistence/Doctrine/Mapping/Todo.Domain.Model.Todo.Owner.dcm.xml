@@ -1,0 +1,11 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                   https://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+
+      <embeddable name="Todo\Domain\Model\Todo\Owner" >
+        <field name="id" column="owner_id" type="string"></field>
+        <field name="username" column="owner_username" type="string"></field>
+        <field name="emailAddress" column="owner_email" type="string"></field>
+      </embeddable>
+</doctrine-mapping>
