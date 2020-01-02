@@ -1,0 +1,14 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+      <entity name="Todo\Domain\Model\Todo\Todo" table="todo">
+            <id name="id" type="todo_id" column="id" />
+            <embedded name="name" class="Todo\Domain\Model\Todo\TodoName" use-column-prefix="false" />
+            <embedded name="owner" class="Todo\Domain\Model\Todo\Owner" use-column-prefix="false" />
+            <embedded name="deadline" class="Todo\Domain\Model\Todo\TodoDeadline" nullable="true" use-column-prefix="false" />
+            <embedded name="reminder" class="Todo\Domain\Model\Todo\TodoReminder" nullable="true" use-column-prefix="false" />
+            <field name="status" column="status" type="todo_status" />
+      </entity>
+
+</doctrine-mapping>
