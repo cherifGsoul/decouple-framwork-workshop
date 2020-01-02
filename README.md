@@ -1,12 +1,16 @@
 # Decoupling Business Logic from Framework Workshop
 
-A conference and a workshop hold at tech event Algeria2.0.
+Decoupling the business logic from the framework workshop example, presented/animated at:
+
+- Algeria2.0 2019 edition 
 
 ## [Slides](https://aladin002dz.github.io/decouple-framwork-workshop/)
 
 ## [Business Logic](./todo/)
 
-## [Framework Code](./todo-laravel)
+## [Laravel framework integration example](./todo-laravel)
+
+## [Slim framework 4.x (PSR7/PSR15) integration example](./todo-slim)
 
 ## Links to reading list books
 
