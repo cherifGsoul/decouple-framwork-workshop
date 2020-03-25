@@ -8,9 +8,9 @@ Decoupling the business logic from the framework workshop example, presented/ani
 
 [Business Logic](./todo/)
 
-[Laravel framework integration example](./todo-laravel)
+[Laravel framework integration example](./todo-laravel/packages/todo/src/Todo)
 
-[Slim framework 4.x (PSR7/PSR15) integration example](./todo-slim)
+[Slim framework 4.x (PSR7/PSR15) integration example](./todo-slim/src/Todo)
 
 ## Links to reading list books
 
