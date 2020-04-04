@@ -208,7 +208,7 @@ date range - whose equality is not based on identity, but instead on the content
 
 - In short auto-increment IDs is a __NO__ __NO__.
 
-- use UUID if there's no codification rule.
+- use Universally Unique IDentifier **(UUID)** if there's no codification rule.
 
 --
 
