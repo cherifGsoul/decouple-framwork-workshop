@@ -20,7 +20,7 @@ class TodoDeadline
         return $deadline;
     }
 
-    public function isInTheFutrue() : bool
+    public function isInTheFuture() : bool
     {
         return $this->deadline > new DateTimeImmutable('now');
     }

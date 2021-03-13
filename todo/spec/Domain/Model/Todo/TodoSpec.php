@@ -63,7 +63,7 @@ class TodoSpec extends ObjectBehavior
     function it_adds_deadline()
     {
         $owner = Owner::from('an-id', 'cherif@site.com', 'cherif_b');
-        $deadline = TodoDeadline::fromString('2020-01-05 11:00:00');
+        $deadline = TodoDeadline::fromString($this->tomorrow());
         $this->addDeadline($owner, $deadline);
         $this->getDeadline()->shouldReturn($deadline);
     }
@@ -71,7 +71,7 @@ class TodoSpec extends ObjectBehavior
     function it_adds_a_reminder()
     {
         $owner = Owner::from('an-id', 'cherif@site.com', 'cherif_b');
-        $reminder = TodoReminder::fromString('2020-12-20 11:00:00');
+        $reminder = TodoReminder::fromString($this->tomorrow());
         $this->addReminder($owner, $reminder);
         $this->getReminder()->shouldReturn($reminder);
     }
@@ -83,5 +83,14 @@ class TodoSpec extends ObjectBehavior
         $id = TodoId::generate();
         $this->beConstructedAdd($id, $name, $owner);
         $this->getId()->toString()->shouldReturn($id->toString());
+    }
+
+    private function tomorrow()
+    {
+        $tomorrow = (new \DateTimeImmutable('now'))
+            ->add(new \DateInterval('P1D'))
+            ->format('Y-m-d');
+
+        return $tomorrow;
     }
 }
