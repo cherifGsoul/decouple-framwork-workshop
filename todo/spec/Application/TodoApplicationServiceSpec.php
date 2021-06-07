@@ -52,7 +52,7 @@ class TodoApplicationServiceSpec extends ObjectBehavior
 
     function it_adds_deadline_to_todo(TodoList $todoList, OwnerService $ownerService)
     {
-        $deadline = TodoDeadline::fromString('2020-01-05');
+        $deadline = TodoDeadline::fromString($this->tomorrow());
         $owner = Owner::from('an-id', 'cherif@site.com', 'cherif_b');
         $todoId = TodoId::generate();
         $todo = Todo::add($todoId, TodoName::fromString('Learn TDD'), $owner);
@@ -62,12 +62,12 @@ class TodoApplicationServiceSpec extends ObjectBehavior
         $ownerService->get('an-id')->willReturn($owner);
         $todoList->persist($todo)->shouldBeCalled();
         $this->beConstructedWith($todoList, $ownerService);
-        $this->addDeadLineToTodo('Learn TDD' ,'2020-01-05', 'an-id');
+        $this->addDeadLineToTodo('Learn TDD' ,$deadline, 'an-id');
     }
 
     function it_adds_reminder_to_todo(TodoList $todoList, OwnerService $ownerService)
     {
-        $reminder = TodoReminder::fromString('2020-01-05');
+        $reminder = TodoReminder::fromString($this->tomorrow());
         $owner = Owner::from('an-id', 'cherif@site.com', 'cherif_b');
         $todoId = TodoId::generate();
         $todo = Todo::add($todoId, TodoName::fromString('Learn TDD'), $owner);
@@ -77,6 +77,15 @@ class TodoApplicationServiceSpec extends ObjectBehavior
         $ownerService->get('an-id')->willReturn($owner);
         $todoList->persist($todo)->shouldBeCalled();
         $this->beConstructedWith($todoList, $ownerService);
-        $this->addReminderToTodo('Learn TDD' ,'2020-01-02', 'an-id');
+        $this->addReminderToTodo('Learn TDD' ,$reminder, 'an-id');
+    }
+
+    private function tomorrow()
+    {
+        $tomorrow = (new \DateTimeImmutable('now'))
+            ->add(new \DateInterval('P1D'))
+            ->format('Y-m-d');
+
+        return $tomorrow;
     }
 }

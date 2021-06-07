@@ -20,7 +20,7 @@ class TodoReminder
         return $todoReminder;
     }
 
-    public function isInTheFutrue() : bool
+    public function isInTheFuture() : bool
     {
         return $this->reminder > new DateTimeImmutable('now');
     }
